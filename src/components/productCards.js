@@ -77,6 +77,11 @@ export class ItemCard extends React.Component {
     }
 
 
+    expressCheckout = () => {
+        this.addToCart(this.data.id)
+        window.location.href = "/checkout";
+    }
+
     render() {
         return (
             <section className="itemCard" >
@@ -97,7 +102,7 @@ export class ItemCard extends React.Component {
                                 <button className="buyButton" onClick={this.addThisToCart}>
                                     <span>add to cart</span>
                                 </button>
-                                <button className="buyButton" onClick={this.addThisToCart} id="express">
+                                <button className="buyButton" onClick={this.expressCheckout} id="express">
                                     <span>Buy Now</span>
                                 </button>
                             </div>

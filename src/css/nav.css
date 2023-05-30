@@ -342,3 +342,43 @@ section#menu.menu-visible{
     visibility: visible;
     width: 80%;
 }
+
+
+.cart{
+    display: flex;
+    min-height: 95%;
+    font-size: calc(15px + 0.39vw);;
+    justify-content: center;
+    justify-items: center;
+}
+
+i.cart {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
+span.cart{
+    font-family: "Suisse_Medium",sans-serif;
+    color: #3f3f3f;
+    font-weight:normal;
+    margin-right: 10%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
+a.cartButton {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    border-radius: 10px;
+    margin-right: 1em;
+    line-height: 1em;
+    padding: .7em;
+    border: solid 1px rgba(160, 160, 160, 0.3);
+}
+

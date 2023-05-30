@@ -1996,45 +1996,6 @@ div.menu-visible {
 
 
 
-.cart{
-	display: flex;
-	min-height: 95%;
-	font-size: calc(15px + 0.39vw);;
-	justify-content: center;
-	justify-items: center;
-}
-
-i.cart {
-	display: flex;
-	align-content: center;
-	align-items: center;
-	justify-items: center;
-}
-
-span.cart{
-	font-family: "Suisse_Medium",sans-serif;
-	color: #3f3f3f;
-	font-weight:normal;
-	margin-right: 10%;
-
-	display: flex;
-	align-content: center;
-	align-items: center;
-	justify-items: center;
-
-}
-
-button.cartButton {
-	display: flex;
-	align-content: center;
-	align-items: center;
-	justify-items: center;
-	border-radius: 10px;
-	margin-right: 1em;
-
-}
-
-
 
 #root {
 	width: 100vw;

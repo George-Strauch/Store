@@ -5,14 +5,13 @@ import {RedirectFunction} from "react-router-dom";
 
 const CartIcon = ({nItems}) => {
     return (
-        <button className="cartButton">
+        <a className="cartButton">
 
             <span className="cart">{nItems}</span>
-            <a href="/checkout">
+            <span href="/checkout">
                 <i className="fa fa-shopping-cart cart"></i>
-            </a>
-
-        </button>
+            </span>
+        </a>
     );
 }
 
@@ -23,7 +22,15 @@ export class Sidenav extends React.Component {
         this.parentData = props.parentData
     }
 
+
     render() {
+        let nItems = this.parentData.getNitemsFromCart();
+        let checkoutMessage = "Add Items to your cart"
+        if (nItems === 1){
+            checkoutMessage = "1 Item is Waiting to be yours"
+        }else if(nItems > 1) {
+            checkoutMessage = nItems + " Items are Waiting to be yours"
+        }
         let menuClass = ""
         if (this.parentData.getIsSideNavVisible()){
             menuClass = "menu-visible"
@@ -38,25 +45,25 @@ export class Sidenav extends React.Component {
               <li>
                 <a href="/">
                   <h3>All Products</h3>
-                  <p></p>
+                  <p>View al products in our inventory</p>
                 </a>
               </li>
               <li>
                 <a href="/">
                   <h3>Knives</h3>
-                  <p></p>
+                  <p>Beautiful Damascus blades</p>
                 </a>
               </li>
               <li>
                 <a href="/">
                   <h3>Stands</h3>
-                  <p></p>
+                  <p>Show off your collection</p>
                 </a>
               </li>
               <li>
                 <a href="/checkout">
                   <h3>Checkout</h3>
-                  <p></p>
+                    <p>{checkoutMessage}</p>
                 </a>
     
               </li>
