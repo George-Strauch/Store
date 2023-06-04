@@ -1,14 +1,12 @@
 import React from "react";
 import '../css/nav.css'
 
-import {RedirectFunction} from "react-router-dom";
 
 const CartIcon = ({nItems}) => {
     return (
-        <a className="cartButton">
-
+        <a className="cartButton" href="/checkout">
             <span className="cart">{nItems}</span>
-            <span href="/checkout">
+            <span >
                 <i className="fa fa-shopping-cart cart"></i>
             </span>
         </a>

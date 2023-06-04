@@ -1,0 +1,19 @@
+
+@import "App.css";
+
+
+
+
+.Page {
+    display: flex;
+    /*padding-left: var(--desktop-nav-size);*/
+    width: 100vw;
+    justify-content: center;
+
+}
+
+#desktop.Page {
+    display: flex;
+    padding-left: var(--desktop-nav-size);
+    width: 100vw;
+}

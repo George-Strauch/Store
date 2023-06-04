@@ -5,7 +5,7 @@
     flex-direction: column;
     width: 100vw;
     height: 100vh;
-    padding: 5vw 3% 3% 3%;
+    padding: 3vh 3% 3% 3%;
     align-items: center;
     margin: 0;
 }
@@ -15,6 +15,19 @@
     flex-direction: column;
     width: 100%;
     height: auto;
+
+}
+
+.checkoutItemList.desktop {
+    border-right: solid 1px rgba(160, 160, 160, 0.3);
+    padding-right: 2%;
+    min-height: 100vh;
+}
+
+
+.checkout.desktop {
+    flex-direction: row;
+    align-items: flex-start;
 }
 
 .checkoutItem{
@@ -29,7 +42,6 @@
     /*background-color: rgba(153, 220, 153, 0.8);*/
     border: solid 1px rgba(160, 160, 160, 0.3);
     border-radius: var(--border-size);
-
 }
 
 .checkoutImageContainer{
@@ -43,7 +55,7 @@
     max-height: 100%;
     padding-top: 0%;
     width: auto;
-    border-radius: 10px;
+    border-radius: var(--border-size);
     /*resize: horizontal;*/
 }
 
@@ -55,7 +67,7 @@
     height: 100%;
     width: 100%;
     align-items: center;
-    border-radius: 10px;
+    border-radius: var(--border-size);
 }
 .checkoutItemTitle {
     margin: 0 0 .5em 0;
@@ -64,16 +76,10 @@
 .checkoutItemInfo{
     display: flex;
     flex-direction: column;
-    /*margin: auto auto;*/
     width: calc(100% - 17vh - 1em);
-    /*width: 60%;*/
-    margin: 10% 0;
     align-items: flex-start;
     justify-content: space-between;
-    /*align-content: space-between;*/
-    /*flex-wrap: wrap;*/
     height: 60%;
-
 }
 
 .checkoutItemQuantityInfo{
@@ -89,24 +95,30 @@
 }
 
 .checkoutPrice{
-    font-size: var(--text-small);
+    color: #111111;
+    font-size: var(--text-med);
+    /*font-size: 20px;*/
     font-family: "Suisse_Medium", sans-serif;
-    padding: .3em;
-    line-height: 1em;
-    border-radius: 10px;
+    /*padding: .2em;*/
+    line-height: var(--line-height);
+    border: solid 1px rgba(160, 160, 160, 0.3);
+    border-radius: var(--border-size);
     background-color: #e0e0e0;
-    /*margin-right: auto;*/
-    /*margin-right: 30%;*/
+    margin-right: auto;
+    padding: calc(2.5vh - 1em) .5em calc(2.5vh - 1em) .5em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .checkoutQuantity {
     font-size: var(--text-small);
     font-family: "Suisse_Medium", sans-serif;
     line-height: 2em;
-    padding: 0 .3em;
+    /*padding: 0 .3em;*/
+    padding: calc(2.5vh - 1em) 1em calc(2.5vh - 1em) 1em;
     background-color: #f0f0f0;
-    margin-right: 3em;
-    border-radius: 10px;
+    margin-right: 1em;
+    border-radius: var(--border-size);
     border: solid 1px rgba(160, 160, 160, 0.3);
 }
 
@@ -124,23 +136,27 @@
     padding: 0 0.3em;
 }
 
-
-
 .checkoutChangeQuantity{
     font-size: var(--text-small);
     font-family: "Suisse_Medium", sans-serif;
     /*padding: .3em;*/
     /*line-height: 1em;*/
     /*border: solid 1px rgba(160, 160, 160, 0.3);*/
-    border-radius: 10px;
+    border-radius: var(--border-size);
     /*background-color: #e0e0e0;*/
     margin: 0 0 0 0;
 }
 
 .priceTableHolder {
-    width: 80%;
+    width: 100%;
     border: solid 1px rgba(160, 160, 160, 0.3);
-    border-radius: 10px;
+    border-radius: var(--border-size);
+}
+
+.priceTableHolder.desktop {
+    /*todo this stuff should be in a parent div that contains the checkout user info and payment gateway*/
+    width: 40%;
+    margin-left: 2%;
 }
 
 .priceTable{
@@ -151,7 +167,7 @@
 }
 .priceTable > tr{
     border-bottom: solid 1px rgba(160, 160, 160, 0.3);
-    border-radius: 10px;
+    border-radius: var(--border-size);
 }
 
 .priceTable >tr:last-child {

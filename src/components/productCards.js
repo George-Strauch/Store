@@ -37,22 +37,27 @@ export class MyCarousel extends React.Component {
 
     render() {
         return (
-            <div className="image-container">
-                <img className="row_img" src={this.images[this.state.currentIndex]} alt="" />
+            <>
+                <div className="image-container">
+                    <img className="displayImage" src={this.images[this.state.currentIndex]} alt="" />
 
-                <div className="swipe" id="left" onClick={() => this.move(-1)}>
-                    <div className="swipeArrowHolder">
-                        <i className="leftArrow navArrow"/>
+                    <div className="swipe" id="left" onClick={() => this.move(-1)}>
+                        <div className="swipeArrowHolder">
+                            <i className="leftArrow navArrow"/>
+                        </div>
+                    </div>
+
+                    <div className="swipe" id="right" onClick={() => this.move(-1)}>
+                        <div className="swipeArrowHolder">
+                            <i className="rightArrow navArrow"/>
+                        </div>
                     </div>
                 </div>
 
-                <div className="swipe" id="right" onClick={() => this.move(-1)}>
-                    <div className="swipeArrowHolder">
-                        <i className="rightArrow navArrow"/>
-                    </div>
-                </div>
-            </div>
-
+                {/*<div>*/}
+                {/*    carousel nav*/}
+                {/*</div>*/}
+            </>
         )
     }
 }
@@ -61,6 +66,7 @@ export class MyCarousel extends React.Component {
 export class ItemCard extends React.Component {
     constructor(props) {
         super(props);
+        this.parentData = this.props.parentData
         this.addToCart = props?.addToCart
         this.data = props?.data;
         this.state = {
@@ -83,8 +89,12 @@ export class ItemCard extends React.Component {
     }
 
     render() {
+        let id_name = ""
+        if (!this.parentData.isMobile()){
+            id_name += "desktop"
+        }
         return (
-            <section className="itemCard" >
+            <section className="itemCard" id={id_name}>
                 <div className="itemcontent">
                     <MyCarousel images={this.data.images}/>
 
@@ -94,16 +104,22 @@ export class ItemCard extends React.Component {
                         </h2>
                         <div className="itemdesc">{this.data.desc}</div>
                         <div  className="POS">
-                  <span className="pricetag">
-                      {this.data.price}
-                  </span>
-
+                            <span className="pricetag">
+                              $ {this.data.price}
+                            </span>
                             <div className="checkoutOptions">
+                                {/*<button className="buyButton" onClick={this.addThisToCart}>*/}
+                                {/*    <span>add to cart</span>*/}
+                                {/*</button>*/}
+                                {/*<button className="buyButton" onClick={this.expressCheckout} id="express">*/}
+                                {/*    <span>Buy Now</span>*/}
+                                {/*</button>*/}
+
                                 <button className="buyButton" onClick={this.addThisToCart}>
-                                    <span>add to cart</span>
+                                    add to cart
                                 </button>
                                 <button className="buyButton" onClick={this.expressCheckout} id="express">
-                                    <span>Buy Now</span>
+                                    Buy Now
                                 </button>
                             </div>
                         </div>
@@ -115,12 +131,9 @@ export class ItemCard extends React.Component {
                             {this.data.descMore}
                         </div>
 
-
                         <div>
                             <ItemTable info={this.data.info}/>
                         </div>
-
-
 
                     </div>
                 </div>
@@ -140,11 +153,12 @@ export default class ProductCards extends React.Component {
         super(props);
         this.parentData = props.parentData
         this.addToCart = this.parentData.addToCart
-        this.shopItems = this.parentData.getItemsList()
-        console.log(this.shopItems)
+
     }
 
     render() {
+        this.shopItems = this.parentData.getItemsList()
+        console.log("update - ", this.shopItems)
         let className = ""
         if (this.parentData.getIsSideNavVisible()){
             className = "menu-visible"
@@ -152,15 +166,20 @@ export default class ProductCards extends React.Component {
             className = "desktop"
         }
         return (
-            <div
+            // todo make this div a component that has the nav off click and the set width from nav
+            <div>
+                <span className="shipping">
+                    100% Free Shipping
+                </span>
+
+                <div
                 id="itemRowContainer"
                 className={className}
-                onClick={this.parentData.hideNav}>
-                <span className="shipping">
-                      100% Free Shipping
-                </span>
-                {this.shopItems.map((x) => <ItemCard data={x} addToCart={this.addToCart}/>)}
+                >
+                    {this.shopItems.map((x) => <ItemCard data={x} addToCart={this.addToCart} parentData={this.parentData}/>)}
+                </div>
             </div>
+
         )
     }
 }

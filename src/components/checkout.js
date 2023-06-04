@@ -36,6 +36,11 @@ function PriceTable (props)  {
 
     let infoList =Object.entries(info);
 
+    // let componentClass = "priceTable"
+    // if (!props.parentData.isMobile()) {
+    //     componentClass += " desktop"
+    // }
+
     return (
         <table className="priceTable">
             {infoList.map((x) =>  (
@@ -99,7 +104,8 @@ export default class Checkout extends React.Component {
     }
 
     render() {
-        let componentClass = "checkout"
+
+        let componentClass = ""
         if (!this.parentData.isMobile()) {
             componentClass += " desktop"
         }
@@ -108,12 +114,9 @@ export default class Checkout extends React.Component {
         let cartDisplayList = Object.values(this.parentData.getCartItems())
         if (cartDisplayList.length > 0) {
             return (
-                // on mobile it will show:
-                // rows of each item in cart (component) img - title - total price -(+ n -)
-                // price table
                 // payment gateway todo
-                <div className={componentClass}>
-                    <div className="checkoutItemList">
+                <div className={"checkout" + componentClass}>
+                    <div className={"checkoutItemList" + componentClass}>
                         {cartDisplayList.map((item) => {
                             return  <CheckoutItem
                                 parentData={this.parentData}
@@ -122,15 +125,16 @@ export default class Checkout extends React.Component {
                         })}
                     </div>
 
-                    <div className="priceTableHolder">
+                    <div className={"priceTableHolder" + componentClass}>
                         <PriceTable
                             cartList={cartDisplayList}
+                            parentData={this.parentData}
                         />
                     </div>
                 </div>
             )
         } else {
-            return EmptyCart
+            return <EmptyCart/>
         }
 
     }
