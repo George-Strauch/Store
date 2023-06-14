@@ -19,6 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start-both": "concurrently --names \"Frontend,Backend\" -c \"blue,green\" \"npm install && npm start\" \"cd ../backend && npm start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
